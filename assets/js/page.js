@@ -146,7 +146,7 @@ var docs = {
 			"access": "уровень доступа <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
 			"func": "функция, которая вызывается при команде cmd <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
 			"executor": "кто исполняет",
-			"members": "задает зависимости"
+			"members": "сторонние атрибуты"
 		},
 		"return": "<pre><code data-language=\"python\">None</pre></code>"
 	}
