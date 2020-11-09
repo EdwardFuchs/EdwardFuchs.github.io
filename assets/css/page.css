@@ -164,3 +164,7 @@ input#search, input#search:focus, input#search:active, input#search:hover {
 #menu li:nth-child(2n+1) {
 	background: #FF719A10;
 }
+
+.hide {
+	width: 0;
+}

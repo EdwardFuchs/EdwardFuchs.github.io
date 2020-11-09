@@ -267,3 +267,20 @@ for (i = 0; i < li.length; i++) {
 		}
 	})
 }
+
+let hide_show_btn = document.getElementById("hide_btn")
+let left = document.getElementById("left")
+
+
+hide_show_btn.addEventListener("click", () => {
+		if (hide_show_btn.id == "hide_btn"){
+	    //left.style.display = "none" //block
+			hide_show_btn.id = 'show_btn';
+			hide_show_btn.innerHTML = '>';
+	}else{
+		//left.style.display = "block" //block
+		hide_show_btn.id = 'hide_btn';
+		hide_show_btn.innerHTML = '<';
+	}
+	left.classList.toggle('hide')
+})
