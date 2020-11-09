@@ -191,7 +191,7 @@ html {
     overflow: hidden;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 700px) {
     .block-left {
         max-width: 100vw;
     }
