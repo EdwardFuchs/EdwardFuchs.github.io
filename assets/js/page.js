@@ -181,6 +181,10 @@ for (i=0; i<params.length; i++){
 function SearchAlgoritm() {
     let filter, ul, li, a, i;
     input = document.getElementById("search");
+		let eng = change_find(input.value)
+		if (input.value != eng){
+			input.value = eng
+		}
 	//console.log(input.value);
     filter = input.value.toUpperCase();
     ul = document.getElementById("menu");
@@ -310,6 +314,31 @@ hide_show_btn.addEventListener("click", () => {
 	}
 	right.classList.toggle('hide');
 })
+
+
+
+function change_find(str)
+{
+  var replace = new Array(
+  "й","ц","у","к","е","н","г","ш","щ","з","х","ъ",
+  "ф","ы","в","а","п","р","о","л","д","ж","э",
+  "я","ч","с","м","и","т","ь","б","ю"
+  );
+  var search = new Array(
+  "q","w","e","r","t","y","u","i","o","p","\\[","\\]",
+  "a","s","d","f","g","h","j","k","l",";","'",
+  "z","x","c","v","b","n","m",",","\\."
+  );
+
+for (var i = 0; i < replace.length; i++) {
+    var reg = new RegExp(replace[i], 'mig');
+    str = str.replace(reg, function (a) {
+        return a == a.toLowerCase() ? search[i] : search[i].toUpperCase();
+    })
+}
+  return str
+}
+
 
 
 Set_color("event")
