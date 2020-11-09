@@ -249,6 +249,7 @@ function ChangeRight(li){
 			}
 		}
 	}
+	res += "<div class = \"padding\"></div>"
 	right.innerHTML = res;
 	Rainbow.color();
 	//console.log()
