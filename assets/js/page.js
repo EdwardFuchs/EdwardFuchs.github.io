@@ -16,7 +16,7 @@ var docs = {
 	},
 	"event.message_send()": {
 		"is_func": true,
-		"data": "event.message_send(string message, int peer_id=None, **params)",
+		"data": "event.message_send(message: string, peer_id: int = None, **params)",
 		"desc": "отправляет сообщение",
 		"args": {
 			"message": "текст сообщения <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
@@ -89,7 +89,7 @@ var docs = {
 	},
 	"event.bot.message_send()": {
 		"is_func": true,
-		"data": "event.bot.message_send(string message, int peer_id, **params)",
+		"data": "event.bot.message_send(message: string, peer_id: int, **params)",
 		"desc": "отправляет сообщение",
 		"args": {
 			"message": "текст сообщения <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
