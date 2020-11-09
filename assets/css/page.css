@@ -165,7 +165,7 @@ input#search, input#search:focus, input#search:active, input#search:hover {
 	background: #FF719A10;
 }
 
-.hide {
+.block-left.hide {
 	width: 0;
 }
 
@@ -183,5 +183,5 @@ input#search, input#search:focus, input#search:active, input#search:hover {
     border-color: #FF719A99;
     z-index:99999;
     margin-left: -2px;
-    
+
 }
