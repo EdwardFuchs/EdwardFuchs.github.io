@@ -168,3 +168,20 @@ input#search, input#search:focus, input#search:active, input#search:hover {
 .hide {
 	width: 0;
 }
+
+#hide_btn, #show_btn{
+    position: fixed;
+    top: 50%;
+    height: 50px;
+    width: 25px;
+    border-radius: 0px 25px 25px 0px;
+    outline: 0;
+    outline-offset: 0;
+    color: white;
+    text-align: center;
+    background: #FF719A99;
+    border-color: #FF719A99;
+    z-index:99999;
+    margin-left: -2px;
+    
+}
