@@ -19,7 +19,7 @@ let docs = {
 		"data": "event.message_send(message: string, peer_id: int = None, **params)",
 		"desc": "отправляет сообщение",
 		"args": {
-			"message": "текст сообщения <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
+			"message": "текст сообщения <span class=\"required\">*</span>",
 			"peer_id": "id чата, куда будет отправлено сообщение",
 			"params": "<a href = \"https://vk.com/dev/messages.send\"> допонительные параметры </a>"
 		},
@@ -66,7 +66,7 @@ let docs = {
 		"data": "event.bot.getBot(type, index=0)",
 		"desc": "получить класс бота",
 		"args": {
-			"type": "тип бота, который мы хотим получить (\"page\", \"group\", \"all\") <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
+			"type": "тип бота, который мы хотим получить (\"page\", \"group\", \"all\") <span class=\"required\">*</span>",
 			"index": "индекс нужного бота из списка подходящих"
 		},
 		"return": "<pre><code data-language=\"python\">class Bot</pre></code>"
@@ -76,7 +76,7 @@ let docs = {
 		"data": "event.bot.setBots(bots)",
 		"desc": "ручное задание списка ботов",
 		"args": {
-			"bots": "массив ботов (как в bots.json) <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>"
+			"bots": "массив ботов (как в bots.json) <span class=\"required\">*</span>"
 		},
 		"return": "<pre><code data-language=\"python\">None</pre></code>"
 	},
@@ -92,8 +92,8 @@ let docs = {
 		"data": "event.bot.message_send(message: string, peer_id: int, **params)",
 		"desc": "отправляет сообщение",
 		"args": {
-			"message": "текст сообщения <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
-			"peer_id": "id чата, куда будет отправлено сообщение <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
+			"message": "текст сообщения <span class=\"required\">*</span>",
+			"peer_id": "id чата, куда будет отправлено сообщение <span class=\"required\">*</span>",
 			"params": "<a href = \"https://vk.com/dev/messages.send\"> допонительные параметры </a>"
 		},
 		"return": "Ответ от Vk API в формате JSON"
@@ -131,7 +131,7 @@ let docs = {
 <div><span style=\"color: orange; margin-left:60px;\">type</span>: тип файла (\"doc\"/\"photo\")</div>
 <div><span style=\"color: orange; margin-left:60px;\">data</span>: битовые данные файла или путь к файлу</div>
 <div><span style=\"color: orange; margin-left:60px;\">name</span>: название файла (используется только тогда, когда data - данные)</div>`,
-		"peer_id": "id чата, куда будет отправлено сообщение <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
+		"peer_id": "id чата, куда будет отправлено сообщение <span class=\"required\">*</span>",
 		"message": "текст сообщения",
 		"params": "<a href = \"https://vk.com/dev/messages.send\"> допонительные параметры </a>"
 },
@@ -142,9 +142,9 @@ let docs = {
 		"data": "HandleCmd(cmd, access, func, executor=-1, **members)",
 		"desc": "функция для задания команд",
 		"args": {
-			"cmd": "команда, на которую будет срабатывать <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
-			"access": "уровень доступа <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
-			"func": "функция, которая вызывается при команде cmd <span style=\"color: red;\">ОБЯЗАТЕЛЬНЫЙ ПАРАМЕТР</span>",
+			"cmd": "команда, на которую будет срабатывать <span class=\"required\">*</span>",
+			"access": "уровень доступа <span class=\"required\">*</span>",
+			"func": "функция, которая вызывается при команде cmd <span class=\"required\">*</span>",
 			"executor": "кто исполняет",
 			"members": "сторонние атрибуты"
 		},
@@ -195,36 +195,40 @@ function SearchAlgoritm() {
     }
 }
 
-function ChangeRight(li){
-	hide_show_btn.id = 'show_btn';
-	hide_show_btn.innerHTML = '>';
-	right.classList.remove('hide');
-	left.classList.remove('show');
-	left.classList.add('hide');
+function ChangeRight(li, hide_left = true){
+	if (hide_left) {
+		if (window.innerWidth <= 700){
+			hide_show_btn.id = 'show_btn';
+			hide_show_btn.innerHTML = '>';
+			right.classList.remove('hide');
+			left.classList.remove('show');
+			left.classList.add('hide');
+		}
+	}
 	let doc = docs[li];
-	res  = "<p class = \"chosen\">" + li + "</p>\n";
+	res  = "<h1 class = \"chosen\">" + li + "</h1>\n";
 	if (doc["is_func"]){
 		res += "<pre style=\"margin-left:20px;\"><code data-language=\"python\">" + doc["data"] + "</pre></code>\n";
-		res += "<p style=\"font-weight: 600;\">Описание:\n</p>"
+		res += "<h2>Описание:\n</h2>"
 		res += "<p style=\"margin-left:20px;\">" + doc["desc"] +"\n</p>"
 		let params = Object.keys(doc["args"])
 		if (params.length != 0){
-			res += "<p style=\"font-weight: 600;\">Параметры:\n</p>";
+			res += "<h2>Параметры:\n</h2>";
 			//console.log(doc["args"])
 			for (i=0; i<params.length; i++){
 				arg = params[i]
 				res += "<p style=\"margin-left:20px;\"><span style=\"color: green;\">" + arg + "</span>: " + doc["args"][arg] + "\n</p>";
 			}
 		}
-		res += "<p style=\"font-weight: 600;\">Возращает:\n</p>";
+		res += "<h2>Возращает:\n</h2>";
 		res += "<p style=\"margin-left:20px;\">" + doc["return"] +"\n</p>"
 	}else{
 		res += "<pre style=\"margin-left:20px;\"><code data-language=\"python\">" + doc["data"] + "</pre></code>\n";
-		res += "<p style=\"font-weight: 600;\">Описание:\n</p>"
+		res += "<h2>Описание:\n</h2>"
 		res += "<p style=\"margin-left:20px;\">" + doc["desc"] +"\n</p>"
 		let members = Object.keys(doc["members"])
 		if (members.length != 0){
-			res += "<p style=\"font-weight: 600;\">Переменные:\n</p>"
+			res += "<h2>Переменные:\n</h2>"
 			//console.log(doc["args"])
 			for (i=0; i<members.length; i++){
 				member = members[i]
@@ -243,14 +247,29 @@ function ChangeRight(li){
 			}
 		}
 		if (metods.length != 0){
-			res += "<p style=\"font-weight: 600;\">Методы:\n</p>"
+			res += "<h2>Методы:\n</h2>"
 			for (i=0; i<metods.length; i++){
-				res += "<p style=\"margin-left:20px;\"><span style=\"color: green;\">" + metods[i] + "</span>: " + docs[metods[i]]["desc"] + "\n</p>";
+				res += "<p><span class = \"method\" style=\"margin-left:20px;\">" + metods[i] + "</span>: " + docs[metods[i]]["desc"] + "\n</p>";
 			}
 		}
 	}
+	res += "<br><br><span class=\"required\">*</span> - обязательный параметр!"
 	res += "<div class = \"padding\"></div>"
 	right.innerHTML = res;
+
+	if (metods.length != 0){
+		methods_in_html = document.getElementsByClassName("method")
+		for(i=0; i<methods_in_html.length; i++){
+			methods_in_html[i].addEventListener('click', event => {
+				if (event["type"] == "click"){
+					Set_color(event["target"]["textContent"])
+					ChangeRight(event["target"]["textContent"])
+				}
+			})
+		}
+	}
+
+
 	Rainbow.color();
 	//console.log()
 }
@@ -258,10 +277,10 @@ function ChangeRight(li){
 function Set_color(event){
 	li = document.getElementById("menu").getElementsByTagName("li");
 	for (i = 0; i < li.length; i++) {
-		if (li[i]["textContent"] != event["target"]["textContent"])
+		if (li[i]["textContent"] != event)
 			li[i].innerHTML = "<p>" + li[i]["textContent"] + "</p>"
 		else
-			li[i].innerHTML = "<p class=\"chosen_li\">" + event["target"].innerHTML + "</p>"
+			li[i].innerHTML = "<p class=\"chosen_li\">" + event + "</p>"
 	}
 }
 
@@ -271,7 +290,7 @@ li = document.getElementById("menu").getElementsByTagName("li");
 for (i = 0; i < li.length; i++) {
 	li[i].addEventListener('click', event => {
 		if (event["type"] == "click"){
-			Set_color(event)
+			Set_color(event["target"]["textContent"])
 			ChangeRight(event["target"]["textContent"])
 		}
 	})
@@ -279,13 +298,11 @@ for (i = 0; i < li.length; i++) {
 
 hide_show_btn.addEventListener("click", () => {
 		if (hide_show_btn.id == "hide_btn"){
-	    //left.style.display = "none" //block
 			hide_show_btn.id = 'show_btn';
 			hide_show_btn.innerHTML = '>';
 			left.classList.remove('show');
 			left.classList.add('hide');
 	}else{
-		//left.style.display = "block" //block
 		hide_show_btn.id = 'hide_btn';
 		hide_show_btn.innerHTML = '<';
 		left.classList.remove('hide');
@@ -293,3 +310,7 @@ hide_show_btn.addEventListener("click", () => {
 	}
 	right.classList.toggle('hide');
 })
+
+
+Set_color("event")
+ChangeRight("event", false)
