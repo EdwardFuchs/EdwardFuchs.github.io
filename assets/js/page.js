@@ -1,4 +1,4 @@
-var docs = {
+let docs = {
 	"event": {
 		"is_func": false,
 		"data": "class Event",
@@ -153,7 +153,7 @@ var docs = {
 }
 
 //function sortData1() {
-//  var keys = Object.keys(docs)
+//  let keys = Object.keys(docs)
 //  keys = keys.sort(function(a,b){(a < b) ? -1 : (a > b) ? 1 : 0;});
 //  return keys
 //}
@@ -161,21 +161,25 @@ var docs = {
 //docs = sortData()
 //console.log(sortData1())
 
+let hide_show_btn = document.getElementById("hide_btn")
+let left = document.getElementById("left")
+let right = document.getElementById("right")
+
 function create_li(ul, name) {
-	var li = document.createElement('li');
+	let li = document.createElement('li');
 	ul.appendChild(li);
 	li.innerHTML="<p>" + name + "</p>";
 }
 
 ul = document.getElementById("menu")
-var params = Object.keys(docs)
+let params = Object.keys(docs)
 for (i=0; i<params.length; i++){
 	create_li(ul, params[i])
 }
 
 
 function SearchAlgoritm() {
-    var filter, ul, li, a, i;
+    let filter, ul, li, a, i;
     input = document.getElementById("search");
 	//console.log(input.value);
     filter = input.value.toUpperCase();
@@ -192,14 +196,18 @@ function SearchAlgoritm() {
 }
 
 function ChangeRight(li){
-	var right = document.getElementById("right");
-	var doc = docs[li];
+	hide_show_btn.id = 'show_btn';
+	hide_show_btn.innerHTML = '>';
+	right.classList.remove('hide');
+	left.classList.remove('show');
+	left.classList.add('hide');
+	let doc = docs[li];
 	res  = "<p class = \"chosen\">" + li + "</p>\n";
 	if (doc["is_func"]){
 		res += "<pre style=\"margin-left:20px;\"><code data-language=\"python\">" + doc["data"] + "</pre></code>\n";
 		res += "<p style=\"font-weight: 600;\">Описание:\n</p>"
 		res += "<p style=\"margin-left:20px;\">" + doc["desc"] +"\n</p>"
-		var params = Object.keys(doc["args"])
+		let params = Object.keys(doc["args"])
 		if (params.length != 0){
 			res += "<p style=\"font-weight: 600;\">Параметры:\n</p>";
 			//console.log(doc["args"])
@@ -214,7 +222,7 @@ function ChangeRight(li){
 		res += "<pre style=\"margin-left:20px;\"><code data-language=\"python\">" + doc["data"] + "</pre></code>\n";
 		res += "<p style=\"font-weight: 600;\">Описание:\n</p>"
 		res += "<p style=\"margin-left:20px;\">" + doc["desc"] +"\n</p>"
-		var members = Object.keys(doc["members"])
+		let members = Object.keys(doc["members"])
 		if (members.length != 0){
 			res += "<p style=\"font-weight: 600;\">Переменные:\n</p>"
 			//console.log(doc["args"])
@@ -225,8 +233,8 @@ function ChangeRight(li){
 		}
 		re_str = "(^" + li + ".)+\\\w+\\\(\\\)"
 		//console.log(re_str)
-		var re = new RegExp(re_str)
-		var docs_metods = Object.keys(docs)
+		let re = new RegExp(re_str)
+		let docs_metods = Object.keys(docs)
 		metods = []
 		for (i=0; i<docs_metods.length; i++){
 			//console.log(docs_metods[i] + ": " + re.test(docs_metods[i]))
@@ -267,10 +275,6 @@ for (i = 0; i < li.length; i++) {
 		}
 	})
 }
-
-let hide_show_btn = document.getElementById("hide_btn")
-let left = document.getElementById("left")
-let right = document.getElementById("right")
 
 hide_show_btn.addEventListener("click", () => {
 		if (hide_show_btn.id == "hide_btn"){
