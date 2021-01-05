@@ -153,7 +153,7 @@ let docs = {
 	"ExceptionHandler()":{
 		"is_func": true,
 		"data": "ExceptionHandler(error, event, bot)",
-		"desc": "Задается в модуле и автоматически исполняется при ошибке. Изначально сообщяет об ошибке отправителю или печатает в консоль",
+		"desc": "Задается в модуле и автоматически исполняется при ошибке. Изначально сообщяет об ошибке отправителю или печатает в консоль.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"error": "строка с описанием ошибки <span class=\"required\">*</span>",
 			"event": "эвент <span class=\"required\">*</span>",
@@ -164,7 +164,7 @@ let docs = {
 	"CheckAccess()":{
 		"is_func": true,
 		"data": "CheckAccess(event, handler)",
-		"desc": "Проверка доступа. Изначально возращает True.",
+		"desc": "Проверка доступа. Изначально возращает True.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>",
 			"handler": "обработчик <span class=\"required\">*</span>"
@@ -174,7 +174,7 @@ let docs = {
 	"WriteLog()":{
 		"is_func": true,
 		"data": "WriteLog(event)",
-		"desc": "Пишет сообщение в лог в виде:  Сторока в виде: idид_человека[ид_беседы]: комманда сообщение",
+		"desc": "Пишет сообщение в лог в виде:  Сторока в виде: idид_человека[ид_беседы]: комманда сообщение.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>"
 		},
@@ -183,7 +183,7 @@ let docs = {
 	"CheckBlackList()":{
 		"is_func": true,
 		"data": "CheckBlackList(event)",
-		"desc": "Проверяет нахождение в черном списке. Изначально возращает True (нет в черном списке)",
+		"desc": "Проверяет нахождение в черном списке. Изначально возращает True (нет в черном списке).<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>"
 		},
@@ -192,7 +192,7 @@ let docs = {
 	"ExecuteHandler()":{
 		"is_func": true,
 		"data": "CheckBlackList(event, handler)",
-		"desc": "Исполняет обработчик (handler).<br/>Изначально выходит из функции, если функция CheckAccess вернула False.<br/>Постом выполняет функкцию PreExecuteHandler, затем выполняет полученный handler, а потом исполняет функцию PostExecuteHandler.<br/>В случае ошибки вызывает ExceptionHandler ",
+		"desc": "Исполняет обработчик (handler).<br/>Изначально выходит из функции, если функция CheckAccess вернула False.<br/>Постом выполняет функкцию PreExecuteHandler, затем выполняет полученный handler, а потом исполняет функцию PostExecuteHandler.<br/>В случае ошибки вызывает ExceptionHandler.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>",
 			"handler": "обработчик <span class=\"required\">*</span>"
@@ -202,7 +202,7 @@ let docs = {
 	"OnCmdNotFound()":{
 		"is_func": true,
 		"data": "OnCmdNotFound(event)",
-		"desc": "Вызывается, когда команда не была найдена. Изначально сообщяет об этом отправителю",
+		"desc": "Вызывается, когда команда не была найдена. Изначально сообщяет об этом отправителю.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>"
 		},
@@ -211,7 +211,7 @@ let docs = {
 	"PreExecuteHandler()":{
 		"is_func": true,
 		"data": "PreExecuteHandler(event, handler)",
-		"desc": "Функция, которая будет вызвана перед запуском модуля",
+		"desc": "Функция, которая будет вызвана перед запуском модуля.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>",
 			"handler": "обработчик <span class=\"required\">*</span>"
@@ -221,7 +221,7 @@ let docs = {
 	"PostExecuteHandler()":{
 		"is_func": true,
 		"data": "PostExecuteHandler(event, handler)",
-		"desc": "Функция, которая будет вызвана после исполнения модуля",
+		"desc": "Функция, которая будет вызвана после исполнения модуля.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>",
 			"handler": "обработчик <span class=\"required\">*</span>"
@@ -231,7 +231,7 @@ let docs = {
 	"OnBotsLaunch()":{
 		"is_func": true,
 		"data": "OnBotsLaunch(bots)",
-		"desc": "Функция, которая будет вызвана при запуске ботов",
+		"desc": "Функция, которая будет вызвана при запуске ботов.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"bots": "боты <span class=\"required\">*</span>"
 		},
@@ -240,7 +240,7 @@ let docs = {
 	"CheckForIgnore()":{
 		"is_func": true,
 		"data": "CheckForIgnore(event, handler)",
-		"desc": "Функция, которая решает стоит ли игнорировать эвент.",
+		"desc": "Функция, которая решает стоит ли игнорировать эвент.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"event": "эвент <span class=\"required\">*</span>",
 			"handler": "обработчик <span class=\"required\">*</span>"
@@ -250,7 +250,7 @@ let docs = {
 	"MainExecute()":{
 		"is_func": true,
 		"data": "MainExecute(cmd, event)",
-		"desc": "Функция, которая выполняет комманду.<br/>Изначально вызывает функцию CheckForIgnore. Затем проверяет наличие команды и в зависимости от этого вызывает ExecuteHandler или OnCmdNotFound, так же вызыает в любом случае ExecuteHandler.<br/>В случае ошиьки вызывает ExceptionHandler",
+		"desc": "Функция, которая выполняет комманду.<br/>Изначально вызывает функцию CheckForIgnore. Затем проверяет наличие команды и в зависимости от этого вызывает ExecuteHandler или OnCmdNotFound, так же вызыает в любом случае ExecuteHandler.<br/>В случае ошиьки вызывает ExceptionHandler.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"cmd": "команда <span class=\"required\">*</span>",
 			"event": "эвент <span class=\"required\">*</span>"
@@ -260,19 +260,19 @@ let docs = {
 	"VKErrorHandler()":{
 		"is_func": true,
 		"data": "VKErrorHandler(bot, error, method, data)",
-		"desc": "Функция, которая вызывается, при ошибке вызова метода Vk",
+		"desc": "Функция, которая вызывается, при ошибке вызова метода Vk.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 			"bot": "бот <span class=\"required\">*</span>",
 			"error": "ошибка <span class=\"required\">*</span>",
 			"method": "метод, который выдал ошибку <span class=\"required\">*</span>",
 			"data": "данные <span class=\"required\">*</span>"
 		},
-		"return": "<pre><code data-language=\"python\">True/False</pre></code>"
+		"return": "<pre><code data-language=\"python\">error</pre></code>"
 	},
 	"GetProxy()":{
 		"is_func": true,
 		"data": "GetProxy()",
-		"desc": "Функция, для получения прокси. Изначально возращает None",
+		"desc": "Функция, для получения прокси. Изначально возращает None.<br/><br/><span class=\"required\">Можно менять в модулях при помощи функции SET_GLOBAL.</span><br/><br/>",
 		"args": {
 		},
 		"return": "<pre><code data-language=\"python\">None</pre></code>"
