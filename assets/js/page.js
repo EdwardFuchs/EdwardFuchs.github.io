@@ -9,7 +9,7 @@ let docs = {
 			"peer_id": "id чата, откуда получено сообщение",
 			"userid": "id человека, который вызвал данный event",
 			"splited": "массив слов, который составлен из сообщения пользователя в нижнем регистре",
-			"args": "дополнительные аргументы",
+			"args": "строка с сообщением пользователя",
 			"message_id": "id сообщения",
 			"bot": "класс данного бота (для подробностей см. bot)"
 		}
@@ -149,7 +149,200 @@ let docs = {
 			"members": "сторонние атрибуты"
 		},
 		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"ExceptionHandler()":{
+		"is_func": true,
+		"data": "ExceptionHandler(error, event, bot)",
+		"desc": "Задается в модуле и автоматически исполняется при ошибке. Изначально сообщяет об ошибке отправителю или печатает в консоль",
+		"args": {
+			"error": "строка с описанием ошибки <span class=\"required\">*</span>",
+			"event": "эвент <span class=\"required\">*</span>",
+			"bot": "бот <span class=\"required\">*</span>",
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"CheckAccess()":{
+		"is_func": true,
+		"data": "CheckAccess(event, handler)",
+		"desc": "Проверка доступа. Изначально возращает True.",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>",
+			"handler": "обработчик <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">True/False</pre></code>"
+	},
+	"WriteLog()":{
+		"is_func": true,
+		"data": "WriteLog(event)",
+		"desc": "Пишет сообщение в лог в виде:  Сторока в виде: idид_человека[ид_беседы]: комманда сообщение",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"CheckBlackList()":{
+		"is_func": true,
+		"data": "CheckBlackList(event)",
+		"desc": "Проверяет нахождение в черном списке. Изначально возращает True (нет в черном списке)",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">True/False</pre></code>"
+	},
+	"ExecuteHandler()":{
+		"is_func": true,
+		"data": "CheckBlackList(event, handler)",
+		"desc": "Исполняет обработчик (handler).<br/>Изначально выходит из функции, если функция CheckAccess вернула False.<br/>Постом выполняет функкцию PreExecuteHandler, затем выполняет полученный handler, а потом исполняет функцию PostExecuteHandler.<br/>В случае ошибки вызывает ExceptionHandler ",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>",
+			"handler": "обработчик <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"OnCmdNotFound()":{
+		"is_func": true,
+		"data": "OnCmdNotFound(event)",
+		"desc": "Вызывается, когда команда не была найдена. Изначально сообщяет об этом отправителю",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"PreExecuteHandler()":{
+		"is_func": true,
+		"data": "PreExecuteHandler(event, handler)",
+		"desc": "Функция, которая будет вызвана перед запуском модуля",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>",
+			"handler": "обработчик <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"PostExecuteHandler()":{
+		"is_func": true,
+		"data": "PostExecuteHandler(event, handler)",
+		"desc": "Функция, которая будет вызвана после исполнения модуля",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>",
+			"handler": "обработчик <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"OnBotsLaunch()":{
+		"is_func": true,
+		"data": "OnBotsLaunch(bots)",
+		"desc": "Функция, которая будет вызвана при запуске ботов",
+		"args": {
+			"bots": "боты <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"CheckForIgnore()":{
+		"is_func": true,
+		"data": "CheckForIgnore(event, handler)",
+		"desc": "Функция, которая решает стоит ли игнорировать эвент.",
+		"args": {
+			"event": "эвент <span class=\"required\">*</span>",
+			"handler": "обработчик <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">True/False</pre></code>"
+	},
+	"MainExecute()":{
+		"is_func": true,
+		"data": "MainExecute(cmd, event)",
+		"desc": "Функция, которая выполняет комманду.<br/>Изначально вызывает функцию CheckForIgnore. Затем проверяет наличие команды и в зависимости от этого вызывает ExecuteHandler или OnCmdNotFound, так же вызыает в любом случае ExecuteHandler.<br/>В случае ошиьки вызывает ExceptionHandler",
+		"args": {
+			"cmd": "команда <span class=\"required\">*</span>",
+			"event": "эвент <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"VKErrorHandler()":{
+		"is_func": true,
+		"data": "VKErrorHandler(bot, error, method, data)",
+		"desc": "Функция, которая вызывается, при ошибке вызова метода Vk",
+		"args": {
+			"bot": "бот <span class=\"required\">*</span>",
+			"error": "ошибка <span class=\"required\">*</span>",
+			"method": "метод, который выдал ошибку <span class=\"required\">*</span>",
+			"data": "данные <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">True/False</pre></code>"
+	},
+	"GetProxy()":{
+		"is_func": true,
+		"data": "GetProxy()",
+		"desc": "Функция, для получения прокси. Изначально возращает None",
+		"args": {
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"SET_GLOBAL()":{
+		"is_func": true,
+		"data": "SET_GLOBAL(val, var, const=False)",
+		"desc": "Задает глобальную переменную",
+		"args": {
+			"val": "название <span class=\"required\">*</span>",
+			"var": "переменная <span class=\"required\">*</span>",
+			"const": "является ли константой"
+		},
+		"return": "<pre><code data-language=\"python\">None</pre></code>"
+	},
+	"GET_GLOBAL()":{
+		"is_func": true,
+		"data": "GET_GLOBAL(val)",
+		"desc": "Проверяет наличие переменной и возращает None (если переменная не существует) или значение переменой (если переменная существует)",
+		"args": {
+			"val": "название <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None/var</pre></code>"
+	},
+	"HandleCmd()":{
+		"is_func": true,
+		"data": "HandleCmd(cmd, access, func, executor=-1, **members)",
+		"desc": "Задает команду и привязывает к ней функцию",
+		"args": {
+			"cmd": "команда <span class=\"required\">*</span>",
+			"access": "доступ <span class=\"required\">*</span>",
+			"func": "функция для исполнения <span class=\"required\">*</span>",
+			"executor": "кто исполняет",
+			"**members": "сторонние атрибуты",
+		},
+		"return": "<pre><code data-language=\"python\">None/var</pre></code>"
+	},
+	"HandleEvent()":{
+		"is_func": true,
+		"data": "HandleEvent(type, func, priority=0, handlers=HANDLERS)",
+		"desc": "Добавляет новый обработчик в массив обработчиков.",
+		"args": {
+			"type": "тип <span class=\"required\">*</span>",
+			"func": "функция для исполнения <span class=\"required\">*</span>",
+			"priority": "приоритет исполнения",
+			"handlers": "обработчики"
+		},
+		"return": "<pre><code data-language=\"python\">None/var</pre></code>"
+	},
+	"GetHandlers()":{
+		"is_func": true,
+		"data": "GetHandlers(type)",
+		"desc": "Возращает обработчики нужного типа.",
+		"args": {
+			"type": "тип <span class=\"required\">*</span>"
+		},
+		"return": "<pre><code data-language=\"python\">None/var</pre></code>"
+	},
+	"RunHandlers()":{
+		"is_func": true,
+		"data": "RunHandlers(type, event, updates)",
+		"desc": "Запускает обработчики определенного типа.",
+		"args": {
+			"type": "тип <span class=\"required\">*</span>",
+			"event": "эвент <span class=\"required\">*</span>",
+			"updates": "обновления от вк <span class=\"required\">*</span>",
+		},
+		"return": "<pre><code data-language=\"python\">None/var</pre></code>"
 	}
+
 }
 
 //function sortData1() {
