@@ -115,19 +115,17 @@ let docs = {
 		"data": "event.bot.upload_files(files, peer_id, message='', **params)",
 		"desc": "отправляет файлы в нужный чат",
 		"args": {
-			"files": `массив json который выглядит:<pre style=\"margin-left:20px;\"><code data-language=\"json\">{
-  [
-    {
-      'type': type,
-      'data': data,
-      'name': name
-    },
-    {
-      'type': type,
-      'data': path_to_file
-    }
-  ]
-}</pre></code>
+			"files": `массив json который выглядит:<pre style=\"margin-left:20px;\"><code data-language=\"json\">[
+{
+  'type': type,
+  'data': data,
+  'name': name
+},
+{
+  'type': type,
+  'data': path_to_file
+}
+]</pre></code>
 <div><span style=\"color: orange; margin-left:60px;\">type</span>: тип файла (\"doc\"/\"photo\")</div>
 <div><span style=\"color: orange; margin-left:60px;\">data</span>: битовые данные файла или путь к файлу</div>
 <div><span style=\"color: orange; margin-left:60px;\">name</span>: название файла (используется только тогда, когда data - данные)</div>`,
