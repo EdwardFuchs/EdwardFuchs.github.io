@@ -57,8 +57,14 @@ a {
 }
 
 a[href^="https://vk.com"]:after {
-	content: url('https://vk.com/images/icons/favicons/fav_logo.ico');
+  content: ' ';
+  display: inline-block;
+  background: url('https://vk.com/images/icons/favicons/fav_logo.ico') no-repeat;
+  background-size: contain;
+  height: 16px;
+  width: 16px;
 }
+
 pre .preloader div, pre .preloader{
 	height: 0px;
 	width: 0px;
